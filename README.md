@@ -1,5 +1,6 @@
 # my-app
 My portfolio app with python
+This is a basic portfolio app that should showcase your professional brand, demonstrate your skills and accomplishments, and make it easy for potential employers or clients to get in touch with you.
 
 # Requirements
 1. Python
