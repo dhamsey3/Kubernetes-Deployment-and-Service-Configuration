@@ -54,6 +54,7 @@ Apply the YAML files to Kubernetes: Apply the deployment and service YAML files 
 
 
 kubectl apply -f deployment.yaml
+
 kubectl apply -f service.yaml
 
 
