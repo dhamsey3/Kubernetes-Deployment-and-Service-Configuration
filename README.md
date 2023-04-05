@@ -14,9 +14,6 @@ To create a Python app with Docker, you will need to follow these basic steps:
 2.	Create a Dockerfile: A Dockerfile is a text file that contains instructions for building a Docker image. It specifies the base image to use, the files to include, and any commands to run during the build process. Here is a basic Dockerfile to get you started:
 bashCopy code
 
-# Use an official Python runtime as a parent image FROM python:3.9-slim-buster # Set the working directory to /app WORKDIR /app # Copy the current directory contents into the container at /app COPY . /app # Install the required packages RUN pip install --no-cache-dir -r requirements.txt
-
-# Make port 5000 available to the world outside this container EXPOSE 8080 # Define environment variable ENV NAME World # Run the command to start the application CMD ["python", "app.py"] 
 
 3.	Build the Docker image: Once you have created the Dockerfile, you can use the docker build command to build the Docker image. Navigate to the directory containing the Dockerfile and run the following command:
 
