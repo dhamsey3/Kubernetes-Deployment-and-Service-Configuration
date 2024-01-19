@@ -1,0 +1,24 @@
+# Stage 1: Build
+FROM python:3.9-alpine as builder
+WORKDIR /app
+COPY requirements.txt .
+
+# Install packages to the user's home directory
+RUN pip install --user -r requirements.txt
+COPY . .
+
+# Rest of your Dockerfile remains unchanged
+
+# Install gunicorn along with other dependencies
+RUN pip install gunicorn
+
+# Stage 2: Final Image
+FROM python:3.9-alpine
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY --from=builder /app /app
+ENV PATH=/root/.local:$PATH
+USER 1001
+
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+
