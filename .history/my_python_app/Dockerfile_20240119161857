@@ -1,0 +1,33 @@
+# Stage 1: Build
+FROM python:3.9-alpine as builder
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install packages to the user's home directory
+RUN pip install --user -r requirements.txt
+
+# Install Gunicorn
+RUN pip install gunicorn
+
+# Copy the rest of your application code
+COPY . .
+
+# Stage 2: Final Image
+FROM python:3.9-alpine
+WORKDIR /app
+
+# Copy the user's local directory from the builder stage, including Gunicorn and dependencies
+COPY --from=builder /root/.local /root/.local
+COPY --from=builder /app /app
+
+# Set the PATH to include the user's local directory
+ENV PATH=/root/.local:$PATH
+
+# Switch to a non-root user
+USER 1001
+
+
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+

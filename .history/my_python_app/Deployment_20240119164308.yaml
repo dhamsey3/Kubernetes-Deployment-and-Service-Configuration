@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: python:3.9-alpine  # Use the same base image as in your Docker setup
+          image: my-app:latest  # Update this line with your image name and tag
           ports:
             - containerPort: 5000
           resources:
