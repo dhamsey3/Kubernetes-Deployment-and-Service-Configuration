@@ -29,12 +29,34 @@ This repository provides configurations for deploying and managing a GeoServices
 
 ## Deployment and Service Interaction
 
-- Explains how the Kubernetes Deployment and Service configurations work together to manage the application lifecycle and expose it to the network.
+Explains how the Kubernetes Deployment and Service configurations work together to manage the application lifecycle and expose it to the network.
 
 ## Troubleshooting
 
-- Provides guidelines and tips for diagnosing and resolving common issues that may arise during deployment and service configuration.
+Provides guidelines and tips for diagnosing and resolving common issues that may arise during deployment and service configuration.
 
 ## Note
 
 This README is designed to be a customizable template to align with specific project requirements. For more detailed information, refer to the official documentation of Kubernetes, Docker, Flask, and the respective geospatial services used in this project.
+
+## Testing
+
+# Testing the Kubernetes Deployment and Service
+
+This document provides commands and instructions for testing and verifying the GeoServices application deployment on a Kubernetes cluster.
+
+## Testing Commands
+
+1. **Check the status of pods**:
+   ```sh
+   kubectl get pods
+2. **Check the status of services**:
+   ```sh
+   kubectl get services
+3. **Check the logs of a specific pod**:
+   ```sh
+   kubectl describe pod <pod-name>
+4. **Execute a command in a running pod:**:
+   ```sh
+   kubectl exec -it <pod-name> -- /bin/bash
+
