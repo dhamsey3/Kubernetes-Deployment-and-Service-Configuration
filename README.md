@@ -35,10 +35,6 @@ Explains how the Kubernetes Deployment and Service configurations work together 
 
 Provides guidelines and tips for diagnosing and resolving common issues that may arise during deployment and service configuration.
 
-## Note
-
-This README is designed to be a customizable template to align with specific project requirements. For more detailed information, refer to the official documentation of Kubernetes, Docker, Flask, and the respective geospatial services used in this project.
-
 ## Testing
 
 # Testing the Kubernetes Deployment and Service
