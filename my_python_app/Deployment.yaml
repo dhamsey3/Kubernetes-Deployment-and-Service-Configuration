@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: python:3.9-alpine  # Use the same base image as in your Docker setup
+          image: my-app:latest   # changed from python:3.9-alpine -> use built image:tag
           ports:
             - containerPort: 5000
           resources:
@@ -26,13 +26,15 @@ spec:
               cpu: "500m"
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 5000
-            initialDelaySeconds: 3
-            periodSeconds: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 5000
-            initialDelaySeconds: 3
-            periodSeconds: 3
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
