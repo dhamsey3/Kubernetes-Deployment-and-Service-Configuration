@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dijato Geoservices</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dijato Geoservices - geospatial analysis, environmental consulting, and resource management.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; }
+        .navbar, .btn-primary, h1, a.navbar-brand { background-color: #007bff; }
+        .container { max-width: 900px; margin: 40px auto; text-align: center; }
+        h1, .navbar-light .navbar-nav .nav-link { color: white; }
+        p { color: #333; font-size: 18px; line-height: 1.6; margin-bottom: 20px; }
+        .card-deck .card { border: 1px solid #007bff; }
+        .card:hover { box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); }
+        .card-img-top { border-top-left-radius: 8px; border-top-right-radius: 8px; height: 200px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .card-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+        .card-text { font-size: 16px; color: #666; }
+        .btn-primary:hover { background-color: #0056b3; border-color: #004085; }
+        .spinner-border { width: 1.5rem; height: 1.5rem; vertical-align: middle; display: none; }
+        .was-validated input:invalid, .was-validated textarea:invalid { border-color: #dc3545; }
+        .was-validated input:valid, .was-validated textarea:valid { border-color: #28a745; }
+        footer { margin-top: 40px; text-align: left; }
+        .status-badge { display:inline-block; padding:6px 12px; border-radius:12px; color:#fff; }
+        .status-ok { background: #28a745; }
+        .status-down { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+        <a class="navbar-brand font-weight-bold" href="#">Dijato Geoservices</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="jumbotron jumbotron-fluid text-white" style="background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; margin-bottom:0;">
+      <div class="container py-5" style="background: rgba(0,0,0,0.45); border-radius: 12px;">
+        <h1 class="display-4 font-weight-bold">Empowering Geospatial Innovation</h1>
+        <p class="lead">Expert geoservices, environmental consulting, and resource management for a sustainable future.</p>
+        <a href="#contact" class="btn btn-lg btn-primary mt-3 shadow">Get in Touch</a>
+      </div>
+    </section>
+
+    <div class="container mt-4">
+        <div class="mb-3 text-right">
+            <strong>Service status:</strong>
+            <span id="healthBadge" class="status-badge status-down">unknown</span>
+            <small class="text-muted ml-2">version: <span id="appVersion">-</span></small>
+        </div>
+    </div>
+
+        <!-- Services Section -->
+        <div class="container" id="services">
+            <h2 class="mb-4">Our Services</h2>
+            <div class="row" id="servicesCards">
+                <!-- Services will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <section class="container my-5" id="testimonials">
+            <h2 class="mb-4">What Our Clients Say</h2>
+            <div class="row" id="testimonialsCards">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </section>
+    
+    <!-- Contact Section -->
+    <footer class="container mt-4" id="contact">
+        <h2>Contact Us</h2>
+        <p>Reach out to us for any inquiries or services:</p>
+        <ul>
+            <li>Email: <a href="mailto:contact@dijato-geoservices.com">contact@dijato-geoservices.com</a></li>
+            <li>Phone: <a href="tel:+1234567890">+123 456 7890</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/dijato-geoservices" target="_blank">LinkedIn Profile</a></li>
+        </ul>
+
+        <hr>
+        <h3>Send us a message</h3>
+        <form id="contactForm" style="max-width:600px">
+            <div class="form-group text-left">
+                <label for="name">Name <span class="text-danger">*</span></label>
+                <input id="name" name="name" class="form-control" placeholder="Your name" required maxlength="100">
+                <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="form-group text-left">
+                <label for="email">Email <span class="text-danger">*</span></label>
+                <input id="email" name="email" type="email" class="form-control" placeholder="you@example.com" required maxlength="254" pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="form-group text-left">
+                <label for="message">Message <span class="text-danger">*</span></label>
+                <textarea id="message" name="message" rows="4" class="form-control" placeholder="Tell us about your project" required maxlength="2000"></textarea>
+                <div class="invalid-feedback">Please enter your message.</div>
+            </div>
+            <div id="contactStatus" class="mb-2"></div>
+            <button type="submit" class="btn btn-primary" id="contactSubmitBtn">
+                <span id="contactSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span id="contactBtnText">Send Message</span>
+            </button>
+        </form>
+
+        <p class="mt-4 text-muted">© Dijato Geoservices <span id="year"></span></p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+                        // Dynamically load services
+                        async function loadServices() {
+                                try {
+                                        const resp = await fetch('/api/services');
+                                        if (!resp.ok) return;
+                                        const data = await resp.json();
+                                        const cards = data.services.map(service => `
+                                            <div class="col-md-4 mb-4">
+                                                <div class="card h-100 shadow-sm">
+                                                    <img class="card-img-top" src="${service.image}" alt="${service.title}">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">${service.title}</h5>
+                                                        <p class="card-text">${service.description}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `).join('');
+                                        document.getElementById('servicesCards').innerHTML = cards;
+                                } catch (e) {}
+                        }
+                        loadServices();
+
+                        // Dynamically load testimonials
+                        async function loadTestimonials() {
+                                try {
+                                        const resp = await fetch('/api/testimonials');
+                                        if (!resp.ok) return;
+                                        const data = await resp.json();
+                                        const cards = data.testimonials.map(t => `
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border-0 shadow-sm h-100">
+                                                    <div class="card-body">
+                                                        <blockquote class="blockquote mb-0">
+                                                            <p>"${t.quote}"</p>
+                                                            <footer class="blockquote-footer">${t.author}, <cite title="Source Title">${t.company}</cite></footer>
+                                                        </blockquote>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `).join('');
+                                        document.getElementById('testimonialsCards').innerHTML = cards;
+                                } catch (e) {}
+                        }
+                        loadTestimonials();
+        // show current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // fetch health and version
+        async function refreshStatus() {
+            try {
+                const healthResp = await fetch('/health');
+                const versionResp = await fetch('/api/version');
+                if (healthResp.ok) {
+                    document.getElementById('healthBadge').textContent = 'ok';
+                    document.getElementById('healthBadge').classList.add('status-ok');
+                    document.getElementById('healthBadge').classList.remove('status-down');
+                } else {
+                    document.getElementById('healthBadge').textContent = 'down';
+                    document.getElementById('healthBadge').classList.add('status-down');
+                    document.getElementById('healthBadge').classList.remove('status-ok');
+                }
+                if (versionResp.ok) {
+                    const v = await versionResp.json();
+                    document.getElementById('appVersion').textContent = v.version || '-';
+                }
+            } catch (err) {
+                document.getElementById('healthBadge').textContent = 'down';
+                document.getElementById('healthBadge').classList.add('status-down');
+            }
+        }
+        refreshStatus();
+        setInterval(refreshStatus, 30_000);
+
+        // contact form submit with spinner and validation
+        const contactForm = document.getElementById('contactForm');
+        const contactSpinner = document.getElementById('contactSpinner');
+        const contactBtnText = document.getElementById('contactBtnText');
+        const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            contactForm.classList.add('was-validated');
+            const statusEl = document.getElementById('contactStatus');
+            statusEl.textContent = '';
+            if (!contactForm.checkValidity()) {
+                statusEl.innerHTML = '<div class="alert alert-warning">Please fill in all required fields correctly.</div>';
+                return;
+            }
+            contactSpinner.style.display = 'inline-block';
+            contactBtnText.textContent = 'Sending...';
+            contactSubmitBtn.disabled = true;
+            try {
+                const payload = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                };
+                const resp = await fetch('/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    statusEl.innerHTML = '<div class="alert alert-success">' + (data.message || 'Message sent') + '</div>';
+                    contactForm.reset();
+                    contactForm.classList.remove('was-validated');
+                } else {
+                    statusEl.innerHTML = '<div class="alert alert-danger">Failed to send message.</div>';
+                }
+            } catch (err) {
+                statusEl.innerHTML = '<div class="alert alert-danger">Error sending message.</div>';
+            } finally {
+                contactSpinner.style.display = 'none';
+                contactBtnText.textContent = 'Send Message';
+                contactSubmitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
