@@ -4,5 +4,11 @@
 .history
 __pycache__
 *.pyc
+*.pyo
 tests
 .env
+*.md
+*.log
+Deployment.yaml
+Service.yaml
+my-app/
